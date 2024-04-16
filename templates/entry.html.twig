@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-2">
+        <a class="btn btn-outline-primary btn-sm" href="/">back</a>
+
+        <div class="row mt-5 pb-4 border-bottom">
+            <div class="col">
+                <h2>{{ entry['ontology_title'] }}</h2>
+
+                <div>
+                    <i class="fa-regular fa-clock me-2"></i> <strong>Latest access:</strong> {{ entry['latest_access'] }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col pt-3">
+                <strong>Description:</strong>
+                {% if '' != entry['summary'] %}
+                    <div class="alert alert-light mt-2">
+                        {{ entry['summary'] }}
+                    </div>
+                {% else %}
+                    <div class="alert fst-italic">
+                        No summary available
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-5">
+                {# authors + contributors #}
+                {% if entry['authors'] is not empty or entry['contributors'] is not empty %}
+                    <div class="row entry-info-block border-bottom">
+                        {% if entry['authors'] is not empty %}
+                            <div class="col p-2">
+                                <div class="fs-6"><i class="fa-solid fa-people-roof me-2"></i> Authors</div>
+                                <div class="fs-5">{{ entry['authors'] }}</div>
+                            </div>
+                        {% endif %}
+                        {% if entry['contributors'] is not empty %}
+                            <div class="col p-2">
+                                <div class="fs-6"><i class="fa-solid fa-people-carry-box me-2"></i> Contributors</div>
+                                <div class="fs-5">{{ entry['contributors'] }}</div>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                {# license #}
+                {% if entry['license_information'] is not empty %}
+                    <div class="entry-info-block border-bottom">
+                        <div class="fs-6"><i class="fa-solid fa-section me-2"></i> License information</div>
+                        <div class="fs-5">{{ entry['license_information'] }}</div>
+                    </div>
+                {% endif %}
+                {# iri #}
+                <div class="entry-info-block border-bottom">
+                    <div class="fs-6"><i class="fa-solid fa-link me-2"></i> Ontology IRI</div>
+                    <div class="fs-5">{{ entry['ontology_iri'] }}</div>
+                </div>
+                {# project page #}
+                {% if entry['project_page'] is not empty %}
+                    <div class="entry-info-block border-bottom">
+                        <div class="fs-6"><i class="fa-solid fa-house me-2"></i> Project page</div>
+                        <div class="fs-5">{{ entry['project_page'] }}</div>
+                    </div>
+                {% endif %}
+                {# source page #}
+                {% if entry['source_page'] is not empty %}
+                    <div class="entry-info-block border-bottom">
+                        <div class="fs-6"><i class="fa-solid fa-info me-2"></i> Source page</div>
+                        <div class="fs-5"><a href="{{ entry['source_page'] }}">{{ entry['source_page'] }}</a></div>
+                    </div>
+                {% endif %}
+                <div class="entry-info-block">
+                    <div class="fs-6 mb-2">Downloadable RDF files:</div>
+
+                    <div class="btn-group" role="group">
+                        {% if entry['latest_json_ld_file'] is not empty %}
+                            <a class="btn btn-outline-primary" href="{{ entry['latest_json_ld_file'] }}">JSON-LD</a>
+                        {% endif %}
+                        {% if entry['latest_n3_file'] is not empty %}
+                            <a class="btn btn-outline-primary" href="{{ entry['latest_n3_file'] }}">N3</a>
+                        {% endif %}
+                        {% if entry['latest_ntriples_file'] is not empty %}
+                            <a class="btn btn-outline-primary" href="{{ entry['latest_ntriples_file'] }}">NTriples</a>
+                        {% endif %}
+                        {% if entry['latest_rdfxml_file'] is not empty %}
+                            <a class="btn btn-outline-primary" href="{{ entry['latest_rdfxml_file'] }}">RDF/XML</a>
+                        {% endif %}
+                        {% if entry['latest_turtle_file'] is not empty %}
+                            <a class="btn btn-outline-primary" href="{{ entry['latest_turtle_file'] }}">Turtle</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

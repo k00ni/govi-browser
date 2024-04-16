@@ -17,6 +17,8 @@ RUN adduser govibrowser sudo
 
 COPY ./default.conf /etc/apache2/sites-enabled/000-default.conf
 
+RUN a2enmod rewrite
+
 WORKDIR /var/www/html
 
 COPY ./run.sh /run.sh

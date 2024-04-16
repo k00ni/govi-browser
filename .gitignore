@@ -1,4 +1,18 @@
-vendor
-*~lock*
-apache-error.log
-composer.lock
+/.env.local
+/.env.local.php
+/.env.*.local
+/*~lock*
+/apache-error.log
+/composer.lock
+/index.db
+/public/bundles/
+/var/
+/vendor/
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###

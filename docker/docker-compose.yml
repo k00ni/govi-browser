@@ -10,3 +10,4 @@ services:
             - 8080:80
         volumes:
             - ./../:/var/www/html/
+        user: 1000:1000
