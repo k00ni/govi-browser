@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="32"
+   height="32"
+   id="svg3765"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="interchange2.svg"
+   inkscape:export-filename="/home/k00ni/Documents/semicon/owl.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs3767" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="18.155519"
+     inkscape:cx="29.143593"
+     inkscape:cy="13.062944"
+     inkscape:current-layer="layer1-9-3"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true" />
+  <metadata
+     id="metadata3770">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(0,-16)">
+    <g
+       inkscape:label="Layer 1"
+       id="layer1-4"
+       transform="translate(0.20202972,-1.9622142e-8)">
+      <g
+         transform="translate(-0.37059768,-0.09089584)"
+         id="layer1-9"
+         inkscape:label="Layer 1">
+        <g
+           inkscape:label="Layer 1"
+           id="layer1-9-3"
+           transform="translate(-44.951788,-4.1416259)">
+          <ellipse
+             transform="matrix(0.41113537,-0.9115743,0.9233678,0.38391654,0,0)"
+             style="fill:#2d2d2d;fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             id="path3015-0-2-2-4"
+             cx="-1.4988863"
+             cy="56.220978"
+             rx="2.6018004"
+             ry="2.6752026" />
+          <g
+             id="g3890"
+             transform="matrix(0.37142648,-1.3956295,-1.4178891,-0.36037355,109.73466,112.59595)">
+            <path
+               sodipodi:nodetypes="cccc"
+               inkscape:connector-curvature="0"
+               id="rect3097"
+               d="m 52.148332,36.646802 3.28516,4.941267 -5.233709,2.589126 c 0,0 1.944501,-7.51474 1.948549,-7.530393 z"
+               style="fill:#2d2d2d;fill-opacity:1;stroke:none" />
+          </g>
+          <rect
+             style="fill:#2d2d2d;fill-opacity:1;stroke:none"
+             id="rect3777"
+             width="2.380779"
+             height="13.808517"
+             x="-72.468834"
+             y="-39.832241"
+             rx="21.780979"
+             ry="0.51967537"
+             transform="scale(-1,-1)" />
+          <g
+             id="g3890-4"
+             transform="matrix(-0.38434733,1.4441794,1.4672134,0.3729099,11.514965,-43.243553)">
+            <path
+               sodipodi:nodetypes="cccc"
+               inkscape:connector-curvature="0"
+               id="rect3097-5"
+               d="m 52.148332,36.646802 3.28516,4.941267 -5.233709,2.589126 c 0,0 1.944501,-7.51474 1.948549,-7.530393 z"
+               style="fill:#2d2d2d;fill-opacity:1;stroke:none" />
+          </g>
+          <rect
+             style="fill:#2d2d2d;fill-opacity:1;stroke:none"
+             id="rect3777-8"
+             width="2.4635994"
+             height="14.288876"
+             x="50.077152"
+             y="32.051395"
+             rx="22.538677"
+             ry="0.5377534" />
+          <rect
+             style="opacity:1;fill:#2d2d2d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.60000002;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             id="rect4144"
+             width="8.6475086"
+             height="8.6475086"
+             x="66.9319"
+             y="43.529934"
+             rx="22.5387"
+             ry="0" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
