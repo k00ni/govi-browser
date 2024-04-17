@@ -41,7 +41,8 @@ class IndexCsvDb
             latest_ntriples_file TEXT,
             latest_rdfxml_file TEXT,
             latest_turtle_file TEXT,
-            latest_access TEXT,
+            modified TEXT,
+            version TEXT,
             source_title TEXT,
             source_url TEXT
         )');
@@ -84,10 +85,11 @@ class IndexCsvDb
                         latest_ntriples_file,
                         latest_rdfxml_file,
                         latest_turtle_file,
-                        latest_access,
+                        modified,
+                        version,
                         source_title,
                         source_url
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);'
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);'
                 );
                 $stmt->execute($row);
             }
@@ -104,18 +106,50 @@ class IndexCsvDb
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$id]);
 
-        return $stmt->fetch();
+        $entry = $stmt->fetch();
+        $entry['ontology_title'] = stripslashes($entry['ontology_title']);
+
+        return $entry;
+    }
+
+    public function getAmountOfMatchingEntries(string $searchTerm): int
+    {
+        $sql = 'SELECT COUNT(id)
+                  FROM entry
+                 WHERE ontology_title LIKE ? OR summary LIKE ?';
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            '%'.$searchTerm.'%',
+            '%'.$searchTerm.'%'
+        ]);
+
+        return (int) $stmt->fetchColumn();
     }
 
     /**
      * @return iterable
      */
-    public function getList(): iterable
+    public function getList(string $searchTerm, string $sorting, int $offset): iterable
     {
-        $sql = 'SELECT * FROM entry ORDER BY latest_access DESC LIMIT 30';
+        if ('by_modified' == $sorting) {
+            $orderByPart = 'ORDER BY modified DESC';
+        } else {
+            $orderByPart = 'ORDER BY ontology_title ASC';
+        }
+
+        $sql = 'SELECT *
+                  FROM entry
+                 WHERE ontology_title LIKE ? OR summary LIKE ?
+                '.$orderByPart.'
+                 LIMIT ?, 30';
 
         $stmt = $this->db->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([
+            '%'.$searchTerm.'%',
+            '%'.$searchTerm.'%',
+            $offset
+        ]);
 
         $result = [];
         foreach ($stmt->fetchAll() as $entry) {

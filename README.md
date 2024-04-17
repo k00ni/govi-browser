@@ -5,5 +5,7 @@
 ## TODO
 
 * [ ] add link to this repo in footer
-* [ ] add data privacy information
-* [ ] info about bootstrap + fontawesome
+* [ ] add data privacy information + usage
+  * [ ] not responsible for links etc.
+* [ ] info about bootstrap + fontawesome + semicon
+* [ ]

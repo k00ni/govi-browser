@@ -1,37 +1,60 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="px-4 my-5 text-center">
-        <h1 class="display-5 fw-bold text-body-emphasis">GOVI Browser</h1>
-        <h4 class="fw-bold text-secondary">Global Ontology and Vocabulary Index</h4>
-        <div class="col-lg-6 mx-auto">
-            <p class="lead mt-4">
-                Browse the GOVI <a href="https://github.com/k00ni/govi">index</a> easily.
-                TODO
-            </p>
-            <div class="d-grid d-sm-flex justify-content-sm-center mt-5">
-                <form action="">
-                    <div class="input-group w-100">
-                        <input type="text" name="search-term" class="form-control" placeholder="What are you interested in?">
-                        <button type="button" class="btn btn-primary btn-lg px-4">Search</button>
+    <div class="px-4 my-5">
+        <h1 class="display-6 fw-bold text-body-emphasis text-center">GOVI Browser</h1>
+        <h4 class="fw-bold text-center text-body-tertiary">
+            Browse the Global Ontology and Vocabulary Index easily.</h4>
+        <div class="container mt-5" style="max-width: 700px;">
+            <form action="{{ path('index') }}" method="GET">
+                <input type="text" name="search_term" class="form-control fs-3" placeholder="What are you interested in?"
+                    value="{{ search_term }}">
+                <div class="row mt-3">
+                    <div class="col">
+                        <select name="sorting" class="form-control">
+                            {% if 'by_title' == sorting %}
+                                <option value="by_title">by title ascending</option>
+                                <option value="by_modified">by modified descending</option>
+                            {% else %}
+                                <option value="by_modified">by modified descending</option>
+                                <option value="by_title">by title ascending</option>
+                            {% endif %}
+                        </select>
                     </div>
-                </form>
-            </div>
+                    <div class="col text-end">
+                        <button type="submit" class="btn btn-primary btn-lg px-4">Search</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
     <hr>
 
-    <div class="container">
+    <div class="container mt-5">
+        <div class="row">
+            {% if show_prev_link %}
+                <div class="col text-start mb-5">
+                    <a class="btn btn-outline-primary" href="{{ path('index') }}{{ prev_page_link }}">previous page</a>
+                </div>
+            {% endif %}
+            {% if show_next_link %}
+                <div class="col text-end mb-5">
+                    <a class="btn btn-outline-primary" href="{{ path('index') }}{{ next_page_link }}">next page</a>
+                </div>
+            {% endif %}
+        </div>
+
         {% for row in index_entries %}
-            <div class="mb-4 border-bottom">
+            <div class="mb-5">
                 <h4><a href="{{ path('entry', {id: row['id']}) }}">{{ row['ontology_title'] }}</a></h4>
 
                 {% if row['summary'] is not empty %}
                     <div class="alert alert-light"><i class="fa-solid fa-info me-2"></i> {{ row['summary']|slice(0, 150) }}...</div>
                 {% else %}
-                    <div class="alert fst-italic"><i class="fa-regular fa-circle-question me-2"></i> No summary available</div>
+                    <div class="alert alert-light fst-italic"><i class="fa-regular fa-circle-question me-2"></i> No summary available</div>
                 {% endif %}
+                <div class="">Modified: {{ row['modified'] }}</div>
             </div>
         {% endfor %}
     </div>

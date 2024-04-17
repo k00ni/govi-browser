@@ -9,14 +9,16 @@
                 <h2>{{ entry['ontology_title'] }}</h2>
 
                 <div>
-                    <i class="fa-regular fa-clock me-2"></i> <strong>Latest access:</strong> {{ entry['latest_access'] }}
+                    <span class="alert alert-info pt-1 pb-1 text-end" style="max-width: 34rem;">
+                        All information is based on data source {{ entry['source_title'] }} or the ontology.
+                    </span>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col pt-3">
-                <strong>Description:</strong>
+                <strong>Summary:</strong>
                 {% if '' != entry['summary'] %}
                     <div class="alert alert-light mt-2">
                         {{ entry['summary'] }}
@@ -71,24 +73,44 @@
                         <div class="fs-5"><a href="{{ entry['source_page'] }}">{{ entry['source_page'] }}</a></div>
                     </div>
                 {% endif %}
+                {# version #}
+                <div class="row entry-info-block border-bottom">
+                    {% if entry['version'] is not empty %}
+                        <div class="col p-2">
+                            <div class="fs-6"><i class="fa-solid fa-code-commit me-2"></i> Version Information</div>
+                            <div class="fs-5">{{ entry['version'] }}</div>
+                        </div>
+                    {% endif %}
+                    {% if entry['modified'] is not empty %}
+                        <div class="col p-2">
+                            <div class="fs-6"><i class="fa-regular fa-clock me-2"></i> Modified</div>
+                            <div class="fs-5">{{ entry['modified'] }}</div>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="entry-info-block">
                     <div class="fs-6 mb-2">Downloadable RDF files:</div>
 
                     <div class="btn-group" role="group">
                         {% if entry['latest_json_ld_file'] is not empty %}
-                            <a class="btn btn-outline-primary" href="{{ entry['latest_json_ld_file'] }}">JSON-LD</a>
+                            <a class="btn btn-outline-primary" href="{{ entry['latest_json_ld_file'] }}" rel="nofollow">
+                                <img src="{{ asset('vendor/semicon/svg/sparql.svg') }}" style="max-width: 2rem;"></a>
                         {% endif %}
                         {% if entry['latest_n3_file'] is not empty %}
-                            <a class="btn btn-outline-primary" href="{{ entry['latest_n3_file'] }}">N3</a>
+                            <a class="btn btn-outline-primary" href="{{ entry['latest_n3_file'] }}" rel="nofollow">
+                                <img src="{{ asset('vendor/semicon/svg/ntriple3.svg') }}" style="max-width: 2rem;"></a>
                         {% endif %}
                         {% if entry['latest_ntriples_file'] is not empty %}
-                            <a class="btn btn-outline-primary" href="{{ entry['latest_ntriples_file'] }}">NTriples</a>
+                            <a class="btn btn-outline-primary" href="{{ entry['latest_ntriples_file'] }}" rel="nofollow">
+                                <img src="{{ asset('vendor/semicon/svg/ntriple.svg') }}" style="max-width: 2rem;"></a>
                         {% endif %}
                         {% if entry['latest_rdfxml_file'] is not empty %}
-                            <a class="btn btn-outline-primary" href="{{ entry['latest_rdfxml_file'] }}">RDF/XML</a>
+                            <a class="btn btn-outline-primary" href="{{ entry['latest_rdfxml_file'] }}" rel="nofollow">
+                                <img src="{{ asset('vendor/semicon/svg/rdf_xml2.svg') }}" style="max-width: 2rem;"></a>
                         {% endif %}
                         {% if entry['latest_turtle_file'] is not empty %}
-                            <a class="btn btn-outline-primary" href="{{ entry['latest_turtle_file'] }}">Turtle</a>
+                            <a class="btn btn-outline-primary" href="{{ entry['latest_turtle_file'] }}" rel="nofollow">
+                                <img src="{{ asset('vendor/semicon/svg/turtle.svg') }}" style="max-width: 2rem;"></a>
                         {% endif %}
                     </div>
                 </div>
