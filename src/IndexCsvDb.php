@@ -116,12 +116,13 @@ class IndexCsvDb
     {
         $sql = 'SELECT COUNT(id)
                   FROM entry
-                 WHERE ontology_title LIKE ? OR summary LIKE ?';
+                 WHERE ontology_title LIKE ? OR summary LIKE ? OR ontology_iri LIKE ?';
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute([
             '%'.$searchTerm.'%',
-            '%'.$searchTerm.'%'
+            '%'.$searchTerm.'%',
+            '%'.$searchTerm.'%',
         ]);
 
         return (int) $stmt->fetchColumn();
@@ -140,12 +141,13 @@ class IndexCsvDb
 
         $sql = 'SELECT *
                   FROM entry
-                 WHERE ontology_title LIKE ? OR summary LIKE ?
+                 WHERE ontology_title LIKE ? OR summary LIKE ? OR ontology_iri LIKE ?
                 '.$orderByPart.'
                  LIMIT ?, 10';
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute([
+            '%'.$searchTerm.'%',
             '%'.$searchTerm.'%',
             '%'.$searchTerm.'%',
             $offset
