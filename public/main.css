@@ -1,7 +1,18 @@
-.entry-info-block {
+.entry_info_block {
     padding-top: 0.3rem;
     padding-bottom: 0.5rem;
 
     margin-top: 0.5rem;
     margin-bottom: 1rem;
+}
+
+#content_top_right {
+    margin-top: 0rem;
+    margin-right: 0.5rem;
+    padding-top: 0rem;
+    float: right;
+}
+
+#content_top_right > a > img {
+    max-width: 2.5rem;
 }

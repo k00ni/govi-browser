@@ -23,9 +23,9 @@ class IndexController extends AbstractController
         $searchTerm = $request->query->get('search_term') ?? '';
         $searchTerm = substr($searchTerm, 0, 200);
 
-        $sorting = $request->query->get('sorting') ?? 'by_title';
+        $sorting = $request->query->get('sorting') ?? 'by_modified';
 
-        $entriesPerSite = 30;
+        $entriesPerSite = 10;
         $offset = (int) ($request->query->get('offset') ?? 0);
         $amountOfMatchingEntries = $this->indexCsvDb->getAmountOfMatchingEntries($searchTerm) - $offset;
 

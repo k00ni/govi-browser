@@ -1,11 +1,11 @@
 # GOVI browser
 
-## LICENSE
+Repository for website: https://govi-browser.inspirito.de
 
-## TODO
+## Contribution
 
-* [ ] add link to this repo in footer
-* [ ] add data privacy information + usage
-  * [ ] not responsible for links etc.
-* [ ] info about bootstrap + fontawesome + semicon
-* [ ]
+Contributions are welcome, please use Pull Requests on Github.
+
+## License
+
+GNU Public License version 2.0, see [LICENSE](./LICENSE).

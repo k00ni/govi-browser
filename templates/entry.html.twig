@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container mt-2">
+    {% include 'note.html.twig' %}
+
+    <div class="container mt-4">
         <a class="btn btn-outline-primary btn-sm" href="/">back</a>
 
         <div class="row mt-5 pb-4 border-bottom">
@@ -17,7 +19,7 @@
         </div>
 
         <div class="row">
-            <div class="col pt-3">
+            <div class="col-12 col-lg-7 pt-3">
                 <strong>Summary:</strong>
                 {% if '' != entry['summary'] %}
                     <div class="alert alert-light mt-2">
@@ -29,10 +31,10 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="col-5">
+            <div class="col-12 col-lg-5">
                 {# authors + contributors #}
                 {% if entry['authors'] is not empty or entry['contributors'] is not empty %}
-                    <div class="row entry-info-block border-bottom">
+                    <div class="row entry_info_block border-bottom">
                         {% if entry['authors'] is not empty %}
                             <div class="col p-2">
                                 <div class="fs-6"><i class="fa-solid fa-people-roof me-2"></i> Authors</div>
@@ -49,36 +51,43 @@
                 {% endif %}
                 {# license #}
                 {% if entry['license_information'] is not empty %}
-                    <div class="entry-info-block border-bottom">
+                    <div class="entry_info_block border-bottom">
                         <div class="fs-6"><i class="fa-solid fa-section me-2"></i> License information</div>
                         <div class="fs-5">{{ entry['license_information'] }}</div>
                     </div>
                 {% endif %}
                 {# iri #}
-                <div class="entry-info-block border-bottom">
+                <div class="entry_info_block border-bottom">
                     <div class="fs-6"><i class="fa-solid fa-link me-2"></i> Ontology IRI</div>
-                    <div class="fs-5">{{ entry['ontology_iri'] }}</div>
+                    <div class="fs-5" style="overflow-wrap: break-word; word-wrap: break-word;">{{ entry['ontology_iri'] }}</div>
                 </div>
                 {# project page #}
                 {% if entry['project_page'] is not empty %}
-                    <div class="entry-info-block border-bottom">
+                    <div class="entry_info_block border-bottom">
                         <div class="fs-6"><i class="fa-solid fa-house me-2"></i> Project page</div>
                         <div class="fs-5">{{ entry['project_page'] }}</div>
                     </div>
                 {% endif %}
                 {# source page #}
                 {% if entry['source_page'] is not empty %}
-                    <div class="entry-info-block border-bottom">
+                    <div class="entry_info_block border-bottom">
                         <div class="fs-6"><i class="fa-solid fa-info me-2"></i> Source page</div>
                         <div class="fs-5"><a href="{{ entry['source_page'] }}">{{ entry['source_page'] }}</a></div>
                     </div>
                 {% endif %}
                 {# version #}
-                <div class="row entry-info-block border-bottom">
+                <div class="row entry_info_block border-bottom">
                     {% if entry['version'] is not empty %}
                         <div class="col p-2">
                             <div class="fs-6"><i class="fa-solid fa-code-commit me-2"></i> Version Information</div>
-                            <div class="fs-5">{{ entry['version'] }}</div>
+                            <div class="fs-5">
+                                {% if 50 > entry['version']|length %}
+                                    {{ entry['version'] }}
+                                {% else %}
+                                    <span title="{{ entry['version'] }}">{{ entry['version']|slice(0, 50) }}...</span>
+                                {% endif %}
+
+                            </div>
                         </div>
                     {% endif %}
                     {% if entry['modified'] is not empty %}
@@ -88,7 +97,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="entry-info-block">
+                <div class="entry_info_block">
                     <div class="fs-6 mb-2">Downloadable RDF files:</div>
 
                     <div class="btn-group" role="group">

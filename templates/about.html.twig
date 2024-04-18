@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h2>About GOVI-Browser</h2>
+
+        <div class="fs-4 text-secondary mt-3">
+            <p>
+                The GOVI browser allows you to search the <a href="https://github.com/k00ni/govi">Global Ontology and Vocabulary Index</a> (GOVI).
+                It uses the latest version of the index.
+                The information displayed comes either from public data sources (e.g. DBpedia Archivo) or from a manually maintained table.
+                If you would like to report an error or make additions, you can do so directly via the <a href="https://github.com/k00ni/govi">GOVI repository</a>.
+            </p>
+
+            <p style="margin-top: 5rem;">
+                This website is maintained via a public Github repository.
+                Changes and new features can be submitted in the form of pull requests via Github:
+            </p>
+
+            <div class="text-center">
+                <a href="https://github.com/k00ni/govi-browser">https://github.com/k00ni/govi-browser</a>
+            </div>
+        </div>
+
+        <p class="fs-5" style="margin-top: 6rem;">
+            The code of this website is licensed under the terms of the <a href="https://github.com/k00ni/govi-browser/blob/master/LICENSE">GNU General Public License Version 2</a> (GPL 2.0).
+        </p>
+    </div>
+{% endblock %}

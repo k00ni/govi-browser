@@ -75,9 +75,9 @@ class IndexCsvDb
                         ontology_title,
                         ontology_iri,
                         summary,
-                        license_information,
                         authors,
                         contributors,
+                        license_information,
                         project_page,
                         source_page,
                         latest_json_ld_file,
@@ -142,7 +142,7 @@ class IndexCsvDb
                   FROM entry
                  WHERE ontology_title LIKE ? OR summary LIKE ?
                 '.$orderByPart.'
-                 LIMIT ?, 30';
+                 LIMIT ?, 10';
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute([

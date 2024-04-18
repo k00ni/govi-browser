@@ -12,12 +12,12 @@
                 <div class="row mt-3">
                     <div class="col">
                         <select name="sorting" class="form-control">
-                            {% if 'by_title' == sorting %}
-                                <option value="by_title">by title ascending</option>
-                                <option value="by_modified">by modified descending</option>
+                            {% if 'by_modified' == sorting %}
+                                <option value="by_modified">sort by modified descending</option>
+                                <option value="by_title">sort by title ascending</option>
                             {% else %}
-                                <option value="by_modified">by modified descending</option>
-                                <option value="by_title">by title ascending</option>
+                                <option value="by_title">sort by title ascending</option>
+                                <option value="by_modified">sort by modified descending</option>
                             {% endif %}
                         </select>
                     </div>
@@ -57,5 +57,20 @@
                 <div class="">Modified: {{ row['modified'] }}</div>
             </div>
         {% endfor %}
+
+        <div class="row">
+            {% if show_prev_link %}
+                <div class="col text-start mb-5">
+                    <a class="btn btn-outline-primary" href="{{ path('index') }}{{ prev_page_link }}">previous page</a>
+                </div>
+            {% endif %}
+            {% if show_next_link %}
+                <div class="col text-end mb-5">
+                    <a class="btn btn-outline-primary" href="{{ path('index') }}{{ next_page_link }}">next page</a>
+                </div>
+            {% endif %}
+        </div>
     </div>
+
+    {% include 'note.html.twig' %}
 {% endblock %}
