@@ -1,0 +1,33 @@
+#!/usr/bin/env php
+<?php
+
+use App\IndexCsvDb;
+use Curl\Curl;
+
+require_once dirname(__DIR__).'/vendor/autoload.php';
+
+try {
+    // 1. download latest version of index.csv
+    $rootDir = __DIR__.'/../';
+    $oldIndex = $rootDir.'index.csv';
+    $targetLocation = $rootDir.'index-new.csv';
+    $curl = new Curl();
+    $curl->download('https://raw.githubusercontent.com/k00ni/govi/master/index.csv', $targetLocation);
+
+    if (false === file_exists($targetLocation)) {
+        throw new Exception('index.csv could not be downloaded. '.$targetLocation.' does not exist');
+    }
+
+    // 2. delete old index.csv and rename downloaded file
+    unlink($oldIndex);
+    rename($targetLocation, $oldIndex);
+
+    // 3. remove index.db
+    unlink($rootDir.'index.db');
+
+    // 4. create fresh version of index.db
+    new IndexCsvDb();
+    return 0;
+} catch (Throwable $th) {
+    throw $th;
+}

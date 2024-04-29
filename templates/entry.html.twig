@@ -38,13 +38,13 @@
                         {% if entry['authors'] is not empty %}
                             <div class="col p-2">
                                 <div class="fs-6"><i class="fa-solid fa-people-roof me-2"></i> Authors</div>
-                                <div class="fs-5">{{ entry['authors'] }}</div>
+                                <div class="fs-5" style="overflow-wrap: break-word; word-wrap: break-word;">{{ entry['authors'] }}</div>
                             </div>
                         {% endif %}
                         {% if entry['contributors'] is not empty %}
                             <div class="col p-2">
                                 <div class="fs-6"><i class="fa-solid fa-people-carry-box me-2"></i> Contributors</div>
-                                <div class="fs-5">{{ entry['contributors'] }}</div>
+                                <div class="fs-5" style="overflow-wrap: break-word; word-wrap: break-word;">{{ entry['contributors'] }}</div>
                             </div>
                         {% endif %}
                     </div>
@@ -53,7 +53,7 @@
                 {% if entry['license_information'] is not empty %}
                     <div class="entry_info_block border-bottom">
                         <div class="fs-6"><i class="fa-solid fa-section me-2"></i> License information</div>
-                        <div class="fs-5">{{ entry['license_information'] }}</div>
+                        <div class="fs-5" style="overflow-wrap: break-word; word-wrap: break-word;">{{ entry['license_information'] }}</div>
                     </div>
                 {% endif %}
                 {# iri #}
